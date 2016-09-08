@@ -1,0 +1,404 @@
+#all{
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    margin: 0 auto;
+    outline: 1px solid #ff0000;
+}
+#game-ready{
+    position: relative;
+    width: 1000px;
+    height: 600px;
+/*margin: 0 auto;*/
+/*border: 1px solid #ff0000;*/
+}
+#logo{
+    width: 436px;
+    height: 92px;
+    background: url("../images/logo.png");
+    margin: 0 auto;
+}
+#beginbg{
+    height: 77px;
+    margin-top: 150px;
+    background: url("../images/beginbg.png");
+    /*使用定义的规则*/
+    /*语法：animation: name(定义的规则的名称) duration(动画所花费的时间)timing-function(动画的速度曲线)
+    delay(动画开始之前的延迟) iteration-count(播放的次数) direction(是否应该轮流反向播放动画);*/
+    -webkit-animation: bedin 10s linear infinite;
+    /*outline: 1px solid #ff0000;*/
+}
+#person{
+    width: 109px;
+    height: 192px;
+    background: url("../images/man.gif");
+    margin: -150px auto 0;
+    /*outline: 1px solid #ff0000;*/
+}
+#start{
+    width: 133px;
+    height: 74px;
+    background: url("../images/start.png");
+    margin: 50px auto 0;
+    /*outline: 1px solid #ff0000;*/
+}
+/*动画*/
+/*定义规则*/
+@-webkit-keyframes bedin{
+    from{background-position: 0 center}
+    to{background-position: -1920px center}
+}
+@-webkit-keyframes jzz{
+    0% {-webkit-transform:scale(1);
+       opacity: 1; }
+    50% {-webkit-transform:scale(1.2);
+        opacity: 1; }
+    100% {-webkit-transform:scale(1);
+        opacity: 1; }
+}
+@-webkit-keyframes bomb{
+    0% {-webkit-transform:scale(1);
+        opacity: 1; }
+    100% {-webkit-transform:scale(5);
+        opacity: 0; }
+}
+#pop{
+    width: 200px;
+    height: 200px;
+    background: url("../images/pop.png" );
+    position: absolute;
+    left: -9px;
+    top: 243px;
+    opacity: 0;
+}
+#pop.pop-show{
+    -webkit-animation: jzz 1s linear infinite;
+    opacity: 1;
+}
+#pop.pop-hide{
+    -webkit-animation: bomb 1s linear;
+    opacity: 0;
+}
+
+/*显示，隐藏*/
+.show{
+    display:block;
+}
+.hide{
+    display:none;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*                游戏道具                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+
+#game-tools{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1000px;
+    height: 600px;
+    background-color: rgba(0,0,0,0.5);
+    /*outline: 1px solid #ff0000;*/
+}
+#game-tools .tool{
+    width: 400px;
+    height: 70px;
+    background: url("../images/gameovershow.png");
+    margin: 100px auto;
+}
+#game-tools .tool h1{
+    text-align: center;
+    padding:10px;
+    /*line-height: 70px;*/
+}
+#game-tools .select{
+    position: relative;
+    width: 500px;
+    height: 300px;
+    margin: -80px auto;
+    border: 5px solid #73AACA;
+}
+#game-tools .select h3{
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+#game-tools .select .round{
+    position: relative;
+    width: 190px;
+    height: 190px;
+    float: left;
+    margin-top: 50px;
+    margin-left: 20px;
+    border: 5px solid #AEBBB0;
+    border-radius: 50%;
+}
+#game-tools .select .small-round{
+    width: 50px;
+    height: 50px;
+    border: 5px solid #AEBBB0;
+    border-radius: 50%;
+    background-color:#AEBBB0;
+}
+#game-tools .select .round:hover{
+    cursor: pointer;
+    background-color: #56B8D1;
+}
+#game-tools .select .small-round img{
+    margin: 30px auto 0 25px;;
+}
+#game-tools .select .begin{
+    width: 86px;
+    height: 95px;
+    background: url("../images/right3.png");
+    margin:100px auto 0 460px;
+}
+#game-tools .select .begin:hover{
+    cursor: pointer;
+    width: 86px;
+    height: 95px;
+    background: url("../images/right2.png");
+    margin:100px auto 0 460px;
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*                死亡界面                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#die{
+    width: 1000px;
+    height: 600px;
+}
+#die .up{
+    width: 1000px;
+    height: 310px;
+    background-color: #3FC9B1;
+ }
+#die .up  p{
+    font-size: 30px;
+    color: white;
+    padding: 50px;
+    text-align: center;
+}
+#die .trigon{
+    position: relative;
+    top: 0;
+    left:200px;
+    padding: 0;
+    margin: 0;
+    width: 0;
+    height: 0;
+    border-top: 15px solid #47C8B1;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+}
+#die .next{
+    width: 1000px;
+    height: 290px;
+    margin: -55px auto 0;
+    background-color: #3B4161;
+}
+#die .next p{
+    padding-top:15px ;
+color: #47BF95;
+font-size:40px;
+text-align: center;
+}
+#die .next .input{
+    margin-left: 395px;
+    margin-top: -30px;
+    width:255px;
+    height: 46px;
+    /*outline: 1px solid red;*/
+}
+#die .next .import{
+    width: 201px;
+    height: 40px;
+    border: 3px solid #47C8B1;
+}
+#die .next .import #name{
+    padding-left: 5px;
+    color: #ffffff;
+    height: 38px;
+    width: 196px;
+    border: none;
+    background-color: #3C4260;
+}
+#die .next .storage{
+    width: 47px;
+    height: 47px;
+    margin: -46px 210px;
+    background: url("../images/jiantou_03.png");
+}
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+/*                结束界面                            */
+/*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
+#over{
+    position: relative;
+    width: 1000px;
+    height: 600px;
+    background-color: rgba(0,0,0,0.8);
+    /*outline: 1px solid #ff0000;*/
+}
+#over .left{
+    position: relative;
+    width: 370px;
+    height: 500px;
+    top: 11px;
+    left: 80px;
+    /*outline: 1px solid #ff0000;*/
+}
+#over .title{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    top: 10px;
+    left:490px; ;
+    width: 400px;
+    height: 70px;
+    background: url("../images/gameovershow.png");
+}
+#over .title h1{
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+#over .left .TOP{
+    width: 130px;
+    height: 65px;
+    background-color:#47C8B1;
+    border-bottom:1px solid #000000 ;
+}
+#over .left .TOP h3{
+    color: white;
+    height: 65px;
+    text-align: center;
+    line-height: 65px;
+}
+#over .left .level{
+    height: 5px;
+    background-color:#47C8B1 ;
+}
+
+
+
+
+
+
+
+#over .right{
+    position: absolute;
+    line-height: 50px;
+    width: 400px;
+    height: 500px;
+    top: 100px;
+    left:490px;
+    /*outline: 1px solid #ff0000;*/
+}
+#over .right .div{
+    height: 500px;
+    /*outline: 1px solid #ff0000;*/
+}
+#over .right .div .message{
+    font-size: 20px;
+    margin-bottom: 10px;
+    height: 50px;
+    /*outline: 1px solid #ff0000;*/
+}
+#over .right .div .message .content{
+    width: 190px;
+    height: 50px;
+    /*background-color: #ff0000;*/
+}
+/*中心线*/
+#over .right .div .message .border{
+    position: relative;
+    top: -47px;
+    width: 0;
+    left: 200px;
+    height: 40px;
+    border: 2px solid #75AAC8;
+}
+/*一二div的背景颜色*/
+#over .right .div .message1{
+    background-color: #9DEAEA;
+}
+/*三div的背景颜色*/
+#over .right .div .message2{
+    background-color: #4C929C;
+    color: #D9B4DF;
+}
+/*四五div的背景颜色*/
+#over .right .div .message3{
+    background-color: #CCF1A0;
+}
+/*右侧*/
+#over .right .div .message .message-right{
+    position: relative;
+    top: -94px;
+    left: 210px;
+    width: 190px;
+    height: 50px;
+    /*background-color: #ff0000;*/
+}
+#over .right .div .message .content-right{
+    /*float: right;*/
+    margin-left: 30px;
+    /*outline: 1px solid red;*/
+
+}
+#over .right .div .return{
+    position: relative;
+    width: 400px;
+    height: 200px;
+    /*outline: 1px solid #ff0000;*/
+}
+#over .right .return #return-left{
+    position: relative;
+    top: 30px ;
+    left: 30px;
+}
+#over .right .return #return-right{
+    position: absolute;
+    top: 0;
+    right: 30px;
+}
+#return-left:hover,#return-right:hover{
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+
+
+/**/
+.canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+#person1{
+    width: 109px;
+    height: 192px;
+    background: url("../images/man.gif");
+    position: absolute;
+    top: 250px;
+    left:25px;
+}
+#bullet{
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    width: 100%;
+    /*border: 1px solid #ff0000;*/
+    position: absolute;
+    left: 0;
+    top: 550px;
+    list-style: none;
+    display: table;
+}
+#bullet li{
+    /*自动分配*/
+    display: table-cell;
+}
+
+td{
+    margin-left: 20px;
+}

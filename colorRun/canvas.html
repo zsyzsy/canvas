@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<canvas id="t" width="1200" height="500" style="border: 1px solid red"></canvas>
+</body>
+</html>
+<script>
+    var canvas=document.getElementsByTagName("canvas")[0];
+    var ctx=canvas.getContext("2d");
+    Picture1();
+    Picture2();
+    Picture3();
+    Picture4();
+    Picture5();
+    Picture6();
+    function Picture1(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(140,-80);
+        ctx.fillStyle="#180C82";
+        ctx.strokeStyle="#85BD26"; //边框颜色
+        ctx.beginPath();
+        ctx.moveTo(100,100);
+        ctx.lineTo(110,105);
+        ctx.quadraticCurveTo(160,70,210,105);
+        ctx.lineTo(220,100);
+        ctx.lineTo(230,125);
+        ctx.lineTo(90,125);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+        ctx.fillStyle="#8F93A7";
+//110是起始点的横坐标，125是起始点的纵坐标，100是起始点到终点的距离，150是高度
+        ctx.fillRect(110,125,100,150);
+        ctx.restore();
+    }
+
+//树木
+    function Picture2(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(0,0);
+        ctx.fillStyle="#FF0000";
+        ctx.beginPath();
+        ctx.moveTo(100,10);
+        ctx.lineTo(40,60);
+        ctx.lineTo(160,60);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.fillStyle="#0000FF";
+        ctx.beginPath();
+        ctx.moveTo(70,60);
+        ctx.lineTo(10,110);
+        ctx.lineTo(190,110);
+        ctx.lineTo(130,60);
+        ctx.fill();
+
+        ctx.fillStyle="#008000";
+        ctx.fillRect(70,110,60,100);
+        ctx.restore();
+    }
+//  房子
+    function Picture3(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(400,0);
+        ctx.beginPath();
+        ctx.fillStyle="#FFFF00";
+        ctx.fillRect(60,10,30,30);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.strokeStyle="#85BD26";
+        ctx.fillStyle="#FF0000";
+        ctx.moveTo(30,40);
+        ctx.lineTo(240,40);
+        ctx.lineTo(260,80);
+        ctx.lineTo(10,80);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle="#008000";
+        ctx.fillRect(30,80,210,200);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle="#0000FF";
+        ctx.fillRect(180,180,40,100);
+        ctx.fill();
+        ctx.restore();
+    }
+//  矩形
+    function Picture4(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(0,220);
+        ctx.beginPath();
+        ctx.strokeStyle="#85BD26";
+        ctx.fillStyle="#FF0000";
+        ctx.moveTo(60,10);
+        ctx.lineTo(60,100);
+        ctx.lineTo(190,100);
+        ctx.lineTo(240,150);
+        ctx.lineTo(10,150);
+        ctx.closePath();
+        ctx.stroke();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle="#0000FF";
+        ctx.fillRect(100,10,150,90);
+        ctx.fill();
+        ctx.restore();
+    }
+//  车
+    function Picture5(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(600,10);
+        ctx.beginPath();
+        ctx.fillStyle="#FF0000";
+        ctx.fillRect(100,10,200,50);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle="#FF0000";
+        ctx.arc(140,80,20,0,Math.PI*2,true);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.fillStyle="#008000";
+        ctx.arc(260,80,20,0,Math.PI*2,true);
+        ctx.closePath();
+        ctx.fill();
+        ctx.restore();
+    }
+
+//  机器人
+    function Picture6(){
+        ctx.save();
+//        改变绘制的坐标原点
+        ctx.translate(700,200);
+        ctx.beginPath();
+        ctx.fillStyle="#FFFF00";
+        ctx.arc(110,10,40,0,Math.PI*2,true);
+        ctx.closePath();
+        ctx.fill();
+//        左手
+        ctx.beginPath();
+        ctx.fillStyle="#FF0000";
+        ctx.fillRect(10,75,30,100);
+        ctx.closePath();
+//身体
+        ctx.beginPath();
+        ctx.fillStyle="#0000FF";
+        ctx.fillRect(50,50,120,140);
+        ctx.closePath();
+//        右手
+        ctx.beginPath();
+        ctx.strokeStyle="#FF0000";
+        ctx.fillStyle="#FF0000";
+        ctx.fillRect(180,75,30,100);
+        ctx.closePath();
+        ctx.stroke();
+
+//        左腿
+        ctx.beginPath();
+        ctx.fillStyle="#008000";
+        ctx.fillRect(70,190,30,80);
+        ctx.closePath();
+//        右腿
+        ctx.beginPath();
+        ctx.fillStyle="#008000";
+        ctx.fillRect(120,190,30,80);
+        ctx.closePath();
+        ctx.restore();
+
+    }
+
+
+
+/*
+
+ctx.strokeStyle="#85BD26"; //边框颜色
+ ctx.stroke();
+
+ */
+</script>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="./css/colorRun.css"/>
+</head>
+<body>
+<div id="all">
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                       开始界面                                   -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div id="game-ready" class="show">
+        <div id="logo"></div>
+        <div id="beginbg"></div>
+        <div id="person"></div>
+        <div id="start" onclick="start()"></div>
+    </div>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                       游戏道具                                   -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div id="game-tools" class="hide">
+        <div class="tool">
+            <h1>游戏道具</h1>
+        </div>
+        <div class="select">
+            <h3>我的金币：<span id="gold"></span></h3>
+            <div class="round">
+                <div class="small-round">
+                    <div ><img src="./images/jjz.png" onclick="protect()" alt=""/></div>
+                </div>
+            </div>
+            <div class="round">
+                <div class="small-round">
+                    <div><img src="./images/slow.png" onclick="deceleration()"  alt=""/></div>
+                </div>
+            </div>
+            <div class="begin" onclick="begin()"></div>
+        </div>
+    </div>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                       游戏界面                                   -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div id="game" class="hide">
+
+        <canvas id="bjCanvas" class="canvas" width="1000" height="600"></canvas>
+        <canvas id="roleCanvas" class="canvas" width="1000" height="600"></canvas>
+        <div id="person1"></div>
+        <div id="pop" ></div>
+        <ul id="bullet">
+
+
+        </ul>
+    </div>
+
+
+
+
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                       死亡界面                                   -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div id="die" class="hide">
+        <div class="up"><p><b>色弱什么的，就不要来玩游戏了嘛...</b></p></div>
+        <div class="trigon"></div>
+        <div class="next">
+            <p><b>your name</b></p>
+            <div class="input"><div class="import"><input type="text" id="name" placeholder="我是不去名字的二逼"/></div>
+                <div class="storage" onclick="storage()"></div></div>
+        </div>
+    </div>
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <!--                       结束界面                                     -->
+    <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+    <div id="over" class="hide" >
+        <div class="title"><h1><b>GAME RESULT</b></h1></div>
+        <div class="left" style="outline: 1px solid #ff0000">
+            <div class="TOP"><h3>TOP Scores</h3></div>
+            <div class="level"></div>
+            <div id="Info"></div>
+        </div>
+        <div class="right">
+            <div class="div">
+                <div class="message message1">
+                    <div class="content">得分：<span id="grade" class="content-right"></span></div><div class="border"></div>
+                    <div class="message-right">颜色：<span id="color" class="content-right"></span></div>
+                </div>
+                <div class="message message1" style="clear: both">
+                    <div class="content"><span>奖励：</span><span id="reward" class="content-right" style="text-align: right"></span></div><div class="border"></div>
+                    <div class="message-right"><span>金币：</span><span id="overGold" class="content-right"></span></div>
+                </div>
+                <div class="message message2" style="clear: both"><span>总分：</span><span id="sum" class="content-right"></span></div>
+
+                <div class="message message3">最高分：<span id="highest" class="content-right"></span></div>
+                <div class="message message3">
+                    <div class="content">我的金币：<span id="MyGrade" class="content-right"></span></div><div class="border"></div>
+                    <div class="message-right">本局排名：<span id="ranking" class="content-right"></span></div>
+                </div>
+                <div class="return">
+                    <div id="return-left" onclick="homepage()">
+                        <img src="./images/main.png"  alt=""/>
+                    </div>
+                    <div id="return-right" onclick="Back()">
+                        <img src="./images/jixu.png"  alt=""/>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/class.js"></script>
+<script type="text/javascript" src="js/game.js"></script>
+</html>
