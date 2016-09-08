@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+        canvas{
+            border:1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+	<canvas id="myCanvas" width=500 height=500></canvas>
+</body>
+<script>
+    var canvas = document.getElementById("myCanvas");
+    var ctx = canvas.getContext('2d');
+    var arr = [];
+
+    var timer = setInterval(function(){
+        
+        ctx.clearRect(0,0,500,500);
+        for(var i=0;i<arr.length;i++){
+            ctx.save();
+            ctx.translate(200,200);
+            ctx.rotate(arr[i].angle * Math.PI/180);
+            ctx.scale(arr[i].scale,arr[i].scale);
+            ctx.fillStyle = arr[i].color;
+            ctx.beginPath();
+            ctx.rect(arr[i].raduis,arr[i].raduis,30,30);
+            ctx.fill();
+            ctx.restore();
+        }
+        
+        
+    },60);
+
+    setInterval(function(){
+        for(var i=0;i<arr.length;i++){
+            if(arr[i].raduis <= 0){
+                arr.splice(i,1);
+                continue;
+            }
+            arr[i].angle += 2;
+            arr[i].scale -= 0.002;
+            arr[i].raduis -= 0.2;
+            if(arr[i].scale <= 0.1){
+                arr[i].scale = 0.1;
+            }
+
+        }
+    },60);
+
+    
+    setInterval(function(){
+        var rgb1 = parseInt(Math.random() * 255);
+        var rgb2 = parseInt(Math.random() * 255);
+        var rgb3 = parseInt(Math.random() * 255);
+        var rect = {
+            angle:0,
+            scale:1,
+            raduis:150,
+            color:'rgb('+rgb1+','+rgb2+','+rgb3+')',
+        };
+        arr.push(rect);
+    },500);
+    
+</script>
+</html>

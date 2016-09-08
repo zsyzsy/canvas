@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500px" height="500px"></canvas>
+</body>
+<script>
+	var myCanvas = document.getElementById('myCanvas');
+	var ctx = myCanvas.getContext('2d');
+	
+	//画圆
+	// ctx.arc(100,100,50,0,Math.PI*2,false);
+	// ctx.stroke();
+	
+	//切线之间的弧度 
+	// ctx.beginPath();
+	// ctx.moveTo(20,20);
+	// ctx.lineTo(80,20);
+	// ctx.arcTo(100,20,100,70,20);
+	// ctx.lineTo(100,100);
+	// ctx.stroke();
+	// 
+	
+	//二次贝塞尔
+	// ctx.beginPath();
+	// ctx.moveTo(50,50);
+	// ctx.quadraticCurveTo(50,50,150,100);
+	// // ctx.closePath();
+	// ctx.stroke();
+	// 
+	
+	//三次贝塞尔
+	// ctx.beginPath();
+	// ctx.moveTo(100,100);
+	// ctx.bezierCurveTo(180,50,260,150,340,100);
+	// // ctx.closePath();
+	// ctx.stroke();
+	// 
+	
+	//随鼠标移动箭头
+	myMove();
+	function myMove(){
+		var startX = 250;
+		var startY = 300;
+		ctx.moveTo(startX,startY);
+		ctx.lineTo(250,260);
+		ctx.lineWidth = 5;
+		ctx.strokeStyle = "red";
+		ctx.stroke();
+		myCanvas.onmousemove = function(e){
+			var mx = e.layerX;
+			var my = e.layerY;
+
+			var angle = Math.atan2((my-startY),(mx-startX));
+			ctx.clearRect(0,0,400,400);
+			ctx.beginPath();
+			ctx.moveTo(startX,startY);
+			ctx.lineTo(startX + 40 * Math.cos(angle),startY + 40 * Math.sin(angle));
+			ctx.stroke();
+
+		}
+	}
+
+	
+	//画特殊图形
+	/*createFiveStar(ctx)
+	ctx.stroke();
+	function createFiveStar(context) {
+		var dx = 100; //画出来的五角星x偏移位置
+		var dy = 100; //画出来的五角星y偏移位置
+		var s = 50; //画出来的五角星的大小
+		context.beginPath(); //开始路径绘制
+		var x = Math.sin(0); //默认的x坐标
+		var y = Math.cos(0); //默认的y坐标
+		var dig = Math.PI / 5 * 4; //弧度值
+		for (var i = 0; i < 30; i++) {
+			var x = Math.sin(i * dig);
+			var y = Math.cos(i * dig);
+			context.lineTo(dx + x * s, dy + y * s); //划线
+		}
+		context.closePath(); //结束路径
+	}*/
+
+	//呼吸效果
+	// var timer = "";
+	// myCanvas.onclick = function(e) {
+	// 	var mx = e.layerX;
+	// 	var my = e.layerY;
+	// 	var angle = 0;
+	// 	clearInterval(timer);
+	// 	timer = 0;
+	// 	if (ctx.isPointInPath(mx, my)) {
+	// 		timer = setInterval(function() {
+	// 			ctx.clearRect(0, 0, 500, 500);
+	// 			ctx.beginPath();
+	// 			ctx.arc(100, 100, 50 + 10 * Math.sin(angle), 0, Math.PI * 2, false);
+	// 			ctx.stroke();
+	// 			angle += 0.1;
+	// 		}, 50);
+	// 	}
+	// }
+	
+	//跳动的方块
+	// jump();
+	// function jump(){
+	// 	ctx.beginPath();
+	// 	ctx.fillStyle = "red";
+	// 	ctx.fillRect(50,250,50,50);
+	// 	ctx.fill();
+
+	// 	var currentCount = 0;
+	// 	var timer = 0;
+	// 	myCanvas.onclick = function(){
+	// 		clearInterval(timer);
+	// 		timer = setInterval(function(){
+	// 			ctx.clearRect(0,0,500,500);
+	// 			ctx.beginPath();
+	// 			var temp = 5*currentCount + 50;
+	// 			ctx.fillRect(temp,250+50*Math.sin(currentCount),50,50);
+	// 			currentCount++;
+	// 		},100);
+	// 	}
+	// }
+
+	//圆形算法
+	function drawCircle(x, y, r) {
+		ctx.beginPath();
+		for (var i = 0; i <= 360; i++) {
+			ctx.lineTo(x + r * Math.sin(i * Math.PI / 180), x + r * Math.cos(i * Math.PI / 180));
+			ctx.stroke();
+		}
+	}
+</script>
+</html>

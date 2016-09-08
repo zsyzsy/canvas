@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border: 1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="500px" height="500px"></canvas>
+</body>
+<script>
+	var myCanvas = document.getElementById('myCanvas');
+	var ctx = myCanvas.getContext('2d');
+	var num = 0;
+	
+	setInterval(function(){
+		ctx.clearRect(0,0,500,500);
+		ctx.save();
+		ctx.translate(200,200);
+		ctx.rotate(num*Math.PI/180);
+		ctx.scale(Math.cos(num*Math.PI/180),Math.cos(num*Math.PI/180));
+		ctx.beginPath();
+		ctx.rect(0,0,100,100);
+		ctx.stroke();
+		
+		//甚至可以让自己绘制出来的图形动画，说明平移，选择等效果，其实是作用于整个上下文环境的
+		// createFiveStar(ctx);
+		ctx.restore();
+		num+=1;
+	},100);
+	
+	function createFiveStar(context) {
+		var dx = 0; //画出来的五角星x偏移位置
+		var dy = 0; //画出来的五角星y偏移位置
+		var s = 50; //画出来的五角星的大小
+		context.beginPath(); //开始路径绘制
+		var x = Math.sin(0); //默认的x坐标
+		var y = Math.cos(0); //默认的y坐标
+		var dig = Math.PI / 5 * 4; //弧度值
+		for (var i = 0; i < 30; i++) {
+			var x = Math.sin(i * dig);
+			var y = Math.cos(i * dig);
+			context.lineTo(dx + x * s, dy + y * s); //划线
+		}
+		context.closePath(); //结束路径
+		context.stroke();
+	}
+</script>
+</html>

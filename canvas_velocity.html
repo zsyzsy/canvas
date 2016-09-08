@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        canvas{
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+<canvas height=500 width=500 id=myCanvas></canvas>
+</body>
+<script>
+    var canvas = document.getElementById('myCanvas');
+    var ctx = canvas.getContext('2d');
+
+    //已知x,y轴的向量速度
+    //可以把速度，想成往一个方向的向量,如果x或y为正,那么就会往右或者下运行
+    //反之，就会往反方向运行
+    /*var vx = 0;
+    var vy = 0;
+
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+        vx += 2;
+        vy += 2;
+    },1000/60);*/
+
+    //已知某个方向的速度,和角度,求得vx,vy向量速度
+    //角速度
+    /*var angle = 45;
+    var speed = 2;
+    var vx = 0;
+    var vy = 0;
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        vx += speed * Math.cos(angle * Math.PI / 180);
+        vy += speed * Math.sin(angle * Math.PI / 180);
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+        //speed += 2;
+
+    },1000/60);*/
+
+
+    //加速度,vx，vy向量速度
+    /*var ax = 0;
+    var vx = 0;
+    var ay = 0;
+    var vy = 0;
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ax += 0.02;
+        vx += ax;
+        ay += 0.02;
+        vy += ay;
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+
+    },1000/60);*/
+
+
+    //角加速度
+    /*var angle = 45;
+    var ax = 0;
+    var ay = 0;
+    var vx = 0;
+    var vy = 0;
+    var speed = 0.05;
+
+    setInterval(function(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ax += Math.cos(angle * Math.PI / 180) * speed;
+        ay += Math.sin(angle * Math.PI / 180) * speed;
+
+        vx += ax;
+        vy += ay;
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+
+    },1000/60);*/
+
+    //使用setTimeout
+    /*var angle = 45;
+    var ax = 0;
+    var ay = 0;
+    var vx = 0;
+    var vy = 0;
+    var speed = 0.05;
+
+    (function draw(){
+        setTimeout(draw,1000/60);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ax += Math.cos(angle * Math.PI / 180) * speed;
+        ay += Math.sin(angle * Math.PI / 180) * speed;
+
+        vx += ax;
+        vy += ay;
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+
+    }());*/
+
+    //使用window.requestAnimationFrame
+    var angle = 45;
+    var ax = 0;
+    var ay = 0;
+    var vx = 0;
+    var vy = 0;
+    var speed = 0.05;
+
+    (function draw(){
+        window.requestAnimationFrame(draw,canvas);
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+
+        ax += Math.cos(angle * Math.PI / 180) * speed;
+        ay += Math.sin(angle * Math.PI / 180) * speed;
+
+        vx += ax;
+        vy += ay;
+
+        ctx.save();
+        ctx.translate(canvas.width/2,canvas.height/2);
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.arc(vx,vy,30,0,2*Math.PI,false);
+        ctx.fill();
+        ctx.restore();
+
+    }());
+
+
+
+
+
+
+
+</script>
+</html>

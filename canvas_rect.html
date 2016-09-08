@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="400px" height="400px"></canvas>
+</body>
+<script>
+    // var canvas = document.getElementById("myCanvas");
+    // var context = canvas.getContext('2d');
+    // context.fillStyle = "rgba(255,0,0,.5)";
+    // context.strokeStyle = "blue";
+    // context.strokeRect(10,10,300,300);
+
+    // context.font="30px Verdana";
+    // var gradient = context.createLinearGradient(0,0,300,0);
+    // gradient.addColorStop(0,"yellow");
+    // gradient.addColorStop(0.3,"red");
+    // gradient.addColorStop(0.6,"blue");
+    // gradient.addColorStop(1,"yellow");
+    // context.strokeStyle = gradient;
+    // context.strokeText("welcome to lovo",20,50);
+
+	drawGradient('myCanvas');
+    function drawGradient(id){
+        var canvas = document.getElementById(id);
+        if(!canvas) return false;
+        var ctx = canvas.getContext('2d');
+
+        //设置阴影模糊级别
+        ctx.shadowBlur=3;
+        //设置阴影颜色
+        ctx.shadowColor="black";
+        //设置阴影的偏移量
+        ctx.shadowOffsetX = 3;
+        ctx.shadowOffsetY = 3;
+        
+        //原始有透明度的填充矩形
+        ctx.fillStyle = "rgba(255,0,0,0.2)";
+        ctx.fillRect(0,0,100,100);
+
+        //带线性渐变的填充矩形
+        var gradient1 = ctx.createLinearGradient(100,0,220,0);
+        gradient1.addColorStop(0,"yellow");
+        gradient1.addColorStop(1,"blue");
+        ctx.fillStyle = gradient1;
+        ctx.fillRect(120,0,100,100);
+
+        //带线性渐变的笔触矩形
+        var gradient2 = ctx.createLinearGradient(250,0,350,0);
+        gradient2.addColorStop(0,"yellow");
+        gradient2.addColorStop(0.5,"red");
+        gradient2.addColorStop(1,"blue");
+        ctx.strokeStyle = gradient2;
+        ctx.strokeRect(250,0,100,100);
+
+        //线性渐变从上下
+        var gradient3 = ctx.createLinearGradient(0,120,0,220);
+        gradient3.addColorStop(0,"yellow");
+        gradient3.addColorStop(0.5,"red");
+        gradient3.addColorStop(1,"blue");
+        ctx.fillStyle = gradient3;
+        ctx.fillRect(0,120,100,100);
+
+        //线性渐变左上角到右下角
+        var gradient4 = ctx.createLinearGradient(120,120,220,220);
+        gradient4.addColorStop(0,"yellow");
+        gradient4.addColorStop(0.5,"red");
+        gradient4.addColorStop(1,"blue");
+        ctx.fillStyle = gradient4;
+        ctx.fillRect(120,120,100,100);
+
+        //线性渐变右上角到左下角
+        var gradient5 = ctx.createLinearGradient(350,120,250,220);
+        gradient5.addColorStop(0,"yellow");
+        gradient5.addColorStop(0.5,"red");
+        gradient5.addColorStop(1,"blue");
+        ctx.fillStyle = gradient5;
+        ctx.fillRect(250,120,100,100);
+
+        //线性渐变右上角到左下角
+        var gradient5 = ctx.createLinearGradient(350,120,250,220);
+        gradient5.addColorStop(0,"yellow");
+        gradient5.addColorStop(0.5,"red");
+        gradient5.addColorStop(1,"blue");
+        ctx.fillStyle = gradient5;
+        ctx.fillRect(250,120,100,100);
+
+        //放射性渐变
+        var gradient6 = ctx.createRadialGradient(50,290,50,50,340,50);
+        gradient6.addColorStop(0,"yellow");
+        gradient6.addColorStop(0.5,"red");
+        gradient6.addColorStop(1,"blue");
+        ctx.fillStyle = gradient6;
+        ctx.fillRect(0,240,100,100);
+
+
+
+    }
+    function draw1(id) {
+            var canvas = document.getElementById(id)
+            if (canvas == null)
+                return false;
+            var context = canvas.getContext("2d");
+            //实践表明在不设施fillStyle下的默认fillStyle=black
+            context.fillRect(0, 0, 100, 100);
+            //实践表明在不设施strokeStyle下的默认strokeStyle=black
+            context.strokeRect(120, 0, 100, 100);
+
+            //设置纯色
+            context.fillStyle = "red";
+            context.strokeStyle = "blue";
+            context.fillRect(0, 120, 100, 100);
+            context.strokeRect(120, 120, 100, 100);
+
+            //设置透明度实践证明透明度值>0,<1值越低，越透明，值>=1时为纯色，值<=0时为完全透明
+            context.fillStyle = "rgba(255,0,0,0.2)";
+            context.strokeStyle = "rgba(255,0,0,0.2)";
+            context.fillRect(240,0 , 100, 100);
+            context.strokeRect(240, 120, 100, 100);
+        }
+</script>
+</html>

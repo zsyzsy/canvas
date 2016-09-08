@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width=500 height=500></canvas>
+</body>
+<script>
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+
+	var originX = 250;
+	var originY = 250;
+	var radius = 100;
+
+	setInterval(function() {
+		ctx.clearRect(0,0,500,500);
+		ctx.beginPath();
+		ctx.shadowColor = "black";
+		ctx.shadowBlur = 5;
+		ctx.shadowOffsetX = 1;
+		ctx.shadowOffsetY = 1;
+		ctx.lineWidth = 2;
+		var gradient = ctx.createRadialGradient(250, 250, 1, 250, 250, 100);
+		gradient.addColorStop(0, "#f5f5f5");
+		gradient.addColorStop(1, "#dfdfdf");
+		ctx.fillStyle = gradient;
+		ctx.arc(250, 250, 100, 0, 2 * Math.PI, true);
+		ctx.stroke();
+		ctx.fill();
+
+		ctx.shadowBlur = 0;
+		ctx.shadowOffsetX = 0;
+		ctx.shadowOffsetY = 0;
+		ctx.strokeStyle = "#333";
+
+		drawScale();
+
+		var date = new Date();
+		var ha = date.getHours() * 12 + (date.getMinutes() * 6 / 12) - 90;
+		var ma = date.getMinutes() * 6 - 90;
+		var sa = date.getSeconds() * 6 - 90;
+
+		drawPointer(55, ha, 4, "#333");
+		drawPointer(65, ma, 3, "#777");
+		drawPointer(75, sa, 2, "red");
+
+		ctx.beginPath();
+		ctx.fillStyle = "red";
+		ctx.arc(originX, originY, 2.5, 0, 2 * Math.PI, true);
+		ctx.fill();
+	}, 1000);
+
+	function drawPointer(radius,angle,width,color){
+		ctx.lineWidth = width;
+		ctx.strokeStyle = color;
+		ctx.beginPath();
+		ctx.moveTo(originX,originY);
+		ctx.lineTo(originX+radius*Math.cos(angle*Math.PI/180),originY+radius*Math.sin(angle*Math.PI/180));
+		ctx.stroke();
+	}
+
+	function drawScale() {
+		var dig = Math.PI / 30;
+		for (var i = 0; i < 60; i++) {
+			var r = radius - 6;
+			var lw = 3;
+			if (i % 5 == 0) {
+				r = radius - 10;
+				lw = 4;
+			}
+			ctx.lineWidth = lw;
+			ctx.beginPath();
+			ctx.moveTo(originX + radius * Math.cos(i * dig), originY + radius * Math.sin(i * dig));
+			ctx.lineTo(originX + r * Math.cos(i * dig), originY + r * Math.sin(i * dig));
+			ctx.stroke();
+		}
+	}
+	
+</script>
+</html>

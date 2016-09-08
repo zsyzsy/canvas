@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		canvas{
+			border:1px solid #ccc;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" height=500 width=500></canvas>
+</body>
+<script>
+	var canvas = document.getElementById('myCanvas');
+	var ctx = canvas.getContext('2d');
+	var dig = Math.PI / 180;
+
+	var colors = ['#CC9999','#FFFF99','#666699','#FF9900','#FFFF00','#CC0066','#CC6633','#CCCC33'];
+	var fonts = ['喝半杯','喝一杯','喝三杯','不喝','抱一个','亲一个','再转一次','轮空'];
+
+	ctx.translate(250,250);
+
+	var angle = 0;
+	// var currentCount = 0;
+	// var count = 36 + 20 * Math.random();
+	var step = 40 + 10*Math.random();
+	
+	var timer = setInterval(function(){
+		ctx.clearRect(-250,-250,500,500);
+
+		if(step <= 0.2) {
+			clearInterval(timer);
+			var num1=Math.ceil(angle/45);
+			var con=fonts[fonts.length-num1];
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.font="18px 微软雅黑";
+			ctx.textAlign="center";
+			ctx.fillText(con,0,0);
+			return;
+		}
+
+		if(angle >= 360) angle=0;
+
+		ctx.beginPath();
+		ctx.lineWidth = 5;
+		ctx.moveTo(120,0);
+		ctx.lineTo(95,0);
+		ctx.stroke();
+
+		ctx.save();
+		ctx.rotate(angle*dig);
+		for (var i = 1; i <= 8; i++) {
+			ctx.beginPath();
+			ctx.moveTo(0,0);
+			ctx.lineWidth = 2;
+			ctx.fillStyle = colors[i-1];
+			ctx.arc(0,0,100,(i-1)*45*dig,i*45*dig,false);
+			ctx.closePath();
+			ctx.fill();
+			ctx.stroke();
+			
+		};
+		step *= 0.95;
+		angle += step;
+		
+		// currentCount ++;
+
+		ctx.beginPath();
+		ctx.fillStyle = "#fff";
+		ctx.arc(0,0,30,0,2*Math.PI,false);
+		ctx.fill();
+
+		for (var i = 0; i < 8; i++) {
+			ctx.save();
+			ctx.beginPath();
+			ctx.fillStyle = "#000";
+			ctx.rotate((i*45+25)*dig);
+			ctx.font="13px 微软雅黑";
+			ctx.fillText(fonts[i],45,0);
+			ctx.restore();
+		};
+		ctx.restore();
+	},60);
+	
+	function QuadraticEaseOut(initPos, targetPos, currentCount, count) {
+		var b = initPos,
+			c = targetPos - initPos,
+			t = currentCount,
+			d = count;
+		//贝塞尔曲线，t取值[0,1],如果是正值，那么速度就会越快，如果是负值速度就越慢
+		//这里t-2就是为了取得负值，那为啥要t-2,不是t-1?t-2会让慢慢变化，最终接近-1，
+		//而t-1最后会变成0，会造成什么效果，可以改一下看一下效果
+		return -c * (t /= d) * (t - 2) + b;
+	}
+
+</script>
+</html>
